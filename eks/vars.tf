@@ -19,5 +19,5 @@ variable "accessConfig" {
 }
 
 variable "s3_bucket_name" {
-  default = "terraform-state-group-18" //TODO: create your S3 manually in aws
+  default = "terraform-state-fiap-group-18" //TODO: create your S3 manually in aws
 }

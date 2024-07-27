@@ -1,14 +1,5 @@
 data "aws_caller_identity" "current" {}
 
-data "aws_instance" "ec2" {
-  filter {
-    name   = "tag:eks:nodegroup-name"
-    values = ["NG-tech-challenge"]
-  }
-
-  depends_on = [aws_eks_node_group.node-group]
-}
-
 data "terraform_remote_state" "rds_state" {
   backend = "s3"
 
