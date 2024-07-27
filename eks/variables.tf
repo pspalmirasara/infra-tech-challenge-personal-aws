@@ -1,8 +1,9 @@
-variable "regionDefault" {
-  default = "us-east-1"
+variable "region" {
+  description = "The region where resources will be created and state will be stored"
+  default     = "us-east-1"
 }
 
-variable "projectName" {
+variable "clusterName" {
   default = "tech-challenge"
 }
 

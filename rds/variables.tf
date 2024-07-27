@@ -23,7 +23,11 @@ variable "db_username" {
   default     = "postgres"
 }
 
-variable "project_name" {
+variable "service_name" {
   description = "The name of the project"
-  default     = "food_fusion"
+  default     = "payment-service-backend"
+}
+
+variable "s3_bucket_name" {
+  default = "terraform-state-fiap-group-18" //TODO: create your S3 manually in aws
 }
