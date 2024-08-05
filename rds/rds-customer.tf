@@ -1,13 +1,13 @@
-resource "aws_db_instance" "default" {
+resource "aws_db_instance" "customer_db" {
   allocated_storage    = 20
   storage_type         = "gp3"
   engine               = "postgres"
   engine_version       = "16.2"
   instance_class       = var.db_instance_class
-  identifier           = "postgres"
-  db_name              = var.db_name
-  username             = var.db_username
-  password             = var.db_password
+  identifier           = "postgres-customer"
+  db_name              = var.customer_db_name
+  username             = var.customer_db_username
+  password             = var.customer_db_password
   parameter_group_name = "default.postgres16"
   publicly_accessible  = true
 
@@ -16,6 +16,6 @@ resource "aws_db_instance" "default" {
   skip_final_snapshot    = true
 
   tags = {
-    Name = "RDS PostgreSQL"
+    Name = "RDS customer PostgreSQL"
   }
 }
