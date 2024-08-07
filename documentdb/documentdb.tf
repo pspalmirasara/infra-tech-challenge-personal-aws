@@ -6,6 +6,7 @@ resource "aws_docdb_cluster" "mongodb" {
   db_subnet_group_name   = aws_docdb_subnet_group.subng-mongodb.name
   vpc_security_group_ids = [aws_security_group.mongodb_public_sg.id]
   skip_final_snapshot    = true
+  db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.tls-disable.name
 }
 
 resource "aws_docdb_cluster_instance" "mongodb-instance" {
@@ -13,4 +14,15 @@ resource "aws_docdb_cluster_instance" "mongodb-instance" {
   identifier         = "mongodb-cluster-instance"
   cluster_identifier = aws_docdb_cluster.mongodb.id
   instance_class     = "db.t3.medium"
+}
+
+resource "aws_docdb_cluster_parameter_group" "tls-disable" {
+  family      = "docdb5.0"
+  name        = "tlsdisable"
+  description = "docdb cluster parameter group"
+
+  parameter {
+    name  = "tls"
+    value = "disabled"
+  }
 }
